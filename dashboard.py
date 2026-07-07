@@ -54,6 +54,7 @@ page = st.sidebar.radio("Select a section:", [
     "🗺️ Project 10 — IAM Modernization Roadmap",
     "📋 Project 11 — RAID Log & Risk Register",
     "📁 Project Governance",
+    "🤖 Project 12 — AI GRC Assistant (Live App)",
     "📊 Monitoring & Detection",
     "🔗 Links & Contact"
 ])
@@ -68,13 +69,13 @@ if page == "🏠 Overview":
     st.title("🛡️ AWS IAM & Cloud Security Lab")
     st.subheader("Enterprise-Grade Identity Governance & Cloud Security Portfolio")
     st.markdown("""
-    This lab replicates an enterprise AWS environment across **11 completed projects** spanning
+    This lab replicates an enterprise AWS environment across **12 completed projects** spanning
     cloud infrastructure, Active Directory identity governance, access certifications,
     privileged access management, security monitoring, and GRC program management.
     """)
 
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Projects Completed", "11")
+    col1.metric("Projects Completed", "12")
     col2.metric("Frameworks Applied", "5")
     col3.metric("IAM Controls Demonstrated", "20+")
     col4.metric("AWS Services Used", "12+")
@@ -120,6 +121,7 @@ if page == "🏠 Overview":
         ("9", "Microsoft Entra ID Cloud Governance", "Cloud RBAC · PIM · Conditional Access", "✅"),
         ("10", "IAM Modernization Roadmap", "SailPoint · CyberArk · Entra ID · 12-month plan", "✅"),
         ("11", "RAID Log & Risk Register", "Risk tracking · Assumptions · Issues · Dependencies", "✅"),
+        ("12", "AI GRC Assistant (Live App)", "AI risk analysis · 7 frameworks · Tested to 100K users", "✅"),
     ]
 
     for num, title, desc, status in projects:
@@ -826,6 +828,54 @@ elif page == "📁 Project Governance":
         - Approval of extended maintenance window for CloudTrail remediation
         - Sign-off on Q4 access certification scope — all privileged accounts vs full population
         """)
+
+# ── PROJECT 12 ──────────────────────────────────────────────
+elif page == "🤖 Project 12 — AI GRC Assistant (Live App)":
+    st.title("🤖 Project 12 — AI-Powered IAM/GRC Assistant")
+    st.markdown("**Live Application · Python · Claude API · Streamlit Cloud**")
+    st.markdown("---")
+
+    st.subheader("🌐 Live Application")
+    st.markdown("### [Launch the AI GRC Assistant →](https://iam-grc-assistant.streamlit.app)")
+    st.markdown("💻 [View Source on GitHub](https://github.com/tyrellmifflin07-glitch/iam-grc-assistant)")
+
+    st.markdown("---")
+    st.subheader("What It Does")
+    st.markdown("""
+    A deployed, production AI application with two capabilities:
+
+    **IAM Risk Assessment** — Upload user access data and receive automated
+    risk detection, enterprise risk taxonomy classification (Cyber, Technology,
+    Data, AI, Third-Party), control mapping across seven frameworks
+    (NIST 800-53, PCI-DSS, SOC 2, HIPAA, COSO, COBIT, DORA), and AI-generated
+    audit reports with thematic risk analysis.
+
+    **AI Adoption Risk Advisor** — Describe a proposed AI use case and receive
+    a structured second-line risk assessment with likelihood/impact ratings,
+    recommended controls with first-line ownership, and a formal
+    Approve / Approve with Conditions / Defer recommendation.
+    """)
+
+    st.markdown("---")
+    st.subheader("Scalability — Stress Tested")
+    scale_data = {
+        "Users": ["1,000", "10,000", "50,000", "100,000"],
+        "Analysis Time": ["< 0.01s", "< 0.01s", "0.02s", "0.05s"],
+        "Findings Processed": ["232", "2,502", "12,316", "24,925"]
+    }
+    st.dataframe(pd.DataFrame(scale_data), use_container_width=True, hide_index=True)
+    st.caption("AI narrator uses intelligent aggregation — statistical summaries plus prioritized Critical/High detail — enabling executive-quality reports at any dataset size.")
+
+    st.markdown("---")
+    st.subheader("Engineering Concepts Demonstrated")
+    st.markdown("""
+    - **AI/LLM Integration** — Claude API with structured prompt engineering
+    - **Scalable architecture** — token-aware aggregation for large datasets
+    - **Enterprise risk taxonomy** — ERM-aligned finding classification
+    - **Multi-framework compliance mapping** — 7 frameworks, article-level detail
+    - **Secure secrets management** — environment-based API key handling
+    - **CI/CD** — GitHub-to-Streamlit-Cloud automated deployment
+    """)
 
 # ── MONITORING ──────────────────────────────────────────────
 elif page == "📊 Monitoring & Detection":
