@@ -9,6 +9,7 @@ st.set_page_config(
     page_icon="🛡️",
     layout="wide"
 )
+
 st.markdown("""
 <style>
     section[data-testid="stSidebar"] {
@@ -31,6 +32,8 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
+
+
 # Sidebar navigation
 st.sidebar.title("🛡️ Lab Navigation")
 st.sidebar.markdown("**Tyrell Mifflin**")
@@ -50,6 +53,7 @@ page = st.sidebar.radio("Select a section:", [
     "☁️ Project 9 — Entra ID Governance",
     "🗺️ Project 10 — IAM Modernization Roadmap",
     "📋 Project 11 — RAID Log & Risk Register",
+    "📁 Project Governance",
     "📊 Monitoring & Detection",
     "🔗 Links & Contact"
 ])
@@ -74,6 +78,17 @@ if page == "🏠 Overview":
     col2.metric("Frameworks Applied", "5")
     col3.metric("IAM Controls Demonstrated", "20+")
     col4.metric("AWS Services Used", "12+")
+
+    st.markdown("---")
+    st.subheader("🎯 Cybersecurity Program Dashboard")
+    pcol1, pcol2, pcol3, pcol4, pcol5, pcol6 = st.columns(6)
+    pcol1.metric("Projects", "1")
+    pcol2.metric("Open Risks", "6")
+    pcol3.metric("Open Issues", "2")
+    pcol4.metric("Milestones", "4")
+    pcol5.metric("Completion", "72%")
+    pcol6.metric("Exec Status", "🟢 Green")
+    st.caption("Full PM artifacts — Charter, RAID Log, Risk Register, Stakeholders, Executive Status — in the 📁 Project Governance section")
 
     st.markdown("---")
     st.subheader("Capabilities Demonstrated")
@@ -526,6 +541,291 @@ elif page == "📋 Project 11 — RAID Log & Risk Register":
     st.markdown("- SOC 2: CC3.1, CC3.2 (Risk Assessment)")
     st.markdown("- PCI-DSS: Requirement 12.3 (Risk Assessment)")
     st.markdown("- ISO 27001: A.8 (Asset Management), A.12 (Operations Security)")
+
+# ── PROJECT GOVERNANCE ──────────────────────────────────────
+elif page == "📁 Project Governance":
+    st.title("📁 Project Governance — PM Command Center")
+    st.markdown("**Project Charter · RAID Log · Risk Register · Stakeholders · Executive Status**")
+    st.markdown("---")
+
+    st.subheader("🎯 Cybersecurity Program Dashboard")
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Active Projects", "1")
+    col2.metric("Open Risks", "6")
+    col3.metric("Open Issues", "2")
+    col4, col5, col6 = st.columns(3)
+    col4.metric("Upcoming Milestones", "4")
+    col5.metric("Completion", "72%")
+    col6.metric("Executive Status", "🟢 Green")
+
+    st.markdown("---")
+
+    tab1, tab2, tab3, tab4, tab5 = st.tabs([
+        "📜 Project Charter",
+        "📋 RAID Log",
+        "⚠️ Risk Register",
+        "👥 Stakeholders",
+        "📊 Executive Status"
+    ])
+
+    # ── TAB 1: PROJECT CHARTER ──
+    with tab1:
+        st.subheader("Project Charter")
+
+        charter = {
+            "Field": [
+                "Project Name",
+                "Sponsor",
+                "Project Manager",
+                "Objective",
+                "Status",
+                "Completion"
+            ],
+            "Detail": [
+                "AWS IAM Security Modernization",
+                "Chief Information Security Officer",
+                "Tyrell Mifflin",
+                "Implement enterprise IAM controls using AWS IAM, RBAC, CloudTrail, CloudWatch, Security Hub, and governance best practices",
+                "In Progress",
+                "72%"
+            ]
+        }
+        st.dataframe(pd.DataFrame(charter), use_container_width=True, hide_index=True)
+
+        st.progress(0.72, text="Overall Project Completion — 72%")
+
+        st.markdown("**Key Milestones**")
+        milestones = {
+            "Milestone": [
+                "IAM policy baseline established",
+                "RBAC implementation complete",
+                "MFA rollout — all privileged accounts",
+                "CloudTrail centralized logging live",
+                "Security Hub findings remediation",
+                "Access certification cycle 1"
+            ],
+            "Target": ["Q1", "Q2", "Q2", "Q3", "Q3", "Q4"],
+            "Status": ["✅ Complete", "✅ Complete", "🔄 In Progress", "✅ Complete", "🔄 In Progress", "📅 Scheduled"]
+        }
+        st.dataframe(pd.DataFrame(milestones), use_container_width=True, hide_index=True)
+
+    # ── TAB 2: RAID LOG ──
+    with tab2:
+        st.subheader("RAID Log")
+
+        raid_gov_data = {
+            "Type": ["Risk", "Risk", "Issue", "Issue", "Action", "Action", "Dependency", "Dependency"],
+            "ID": ["R-01", "R-02", "I-01", "I-02", "A-01", "A-02", "D-01", "D-02"],
+            "Description": [
+                "IAM roles configured with overly permissive policies",
+                "MFA adoption delays may impact go-live schedule",
+                "Security Hub critical finding — CloudTrail configuration gap",
+                "Finance user group unable to access reporting application post-RBAC migration",
+                "Deploy MFA enforcement policy to all privileged accounts",
+                "Complete peer review of all IAM policy documents",
+                "HR must provide current employee roster for access recertification",
+                "Network team must complete firewall rules for logging pipeline"
+            ],
+            "Owner": ["IAM Team", "PM", "AWS Admin", "IAM Team", "Security", "IAM Team", "HR", "Network Team"],
+            "Priority": ["High", "Medium", "Critical", "High", "High", "Medium", "Medium", "High"],
+            "Status": ["Open", "Monitoring", "Open", "Resolved", "In Progress", "In Progress", "Open", "Open"]
+        }
+
+        df_raid_gov = pd.DataFrame(raid_gov_data)
+
+        # Filters — exactly how PMs work
+        fcol1, fcol2, fcol3 = st.columns(3)
+        with fcol1:
+            type_filter = st.multiselect("Filter by Type", options=df_raid_gov["Type"].unique(), default=list(df_raid_gov["Type"].unique()))
+        with fcol2:
+            status_filter = st.multiselect("Filter by Status", options=df_raid_gov["Status"].unique(), default=list(df_raid_gov["Status"].unique()))
+        with fcol3:
+            priority_filter = st.multiselect("Filter by Priority", options=df_raid_gov["Priority"].unique(), default=list(df_raid_gov["Priority"].unique()))
+
+        search = st.text_input("🔍 Search descriptions")
+
+        filtered = df_raid_gov[
+            df_raid_gov["Type"].isin(type_filter) &
+            df_raid_gov["Status"].isin(status_filter) &
+            df_raid_gov["Priority"].isin(priority_filter)
+        ]
+        if search:
+            filtered = filtered[filtered["Description"].str.contains(search, case=False)]
+
+        def color_gov_type(val):
+            colors = {
+                "Risk": "background-color: #fde8e8; color: #a32d2d",
+                "Issue": "background-color: #faeeda; color: #854f0b",
+                "Action": "background-color: #e6f1fb; color: #185fa5",
+                "Dependency": "background-color: #e1f5ee; color: #0f6e56"
+            }
+            return colors.get(val, "")
+
+        def color_gov_priority(val):
+            colors = {
+                "Critical": "background-color: #a32d2d; color: #ffffff",
+                "High": "background-color: #fde8e8; color: #a32d2d",
+                "Medium": "background-color: #faeeda; color: #854f0b"
+            }
+            return colors.get(val, "")
+
+        styled_gov = filtered.style.map(color_gov_type, subset=["Type"]).map(color_gov_priority, subset=["Priority"])
+        st.dataframe(styled_gov, use_container_width=True, hide_index=True)
+
+    # ── TAB 3: RISK REGISTER ──
+    with tab3:
+        st.subheader("Risk Register")
+
+        gov_risk_data = {
+            "Risk ID": ["R001", "R002", "R003", "R004", "R005", "R006"],
+            "Risk": [
+                "Overly permissive IAM policy grants excessive access",
+                "CloudTrail disabled in one region — audit gap",
+                "No MFA enforcement on privileged accounts",
+                "Stale access keys older than 90 days",
+                "Root account usage detected",
+                "Security group allows unrestricted inbound access"
+            ],
+            "Likelihood": ["High", "Medium", "High", "Medium", "Low", "Medium"],
+            "Impact": ["High", "Critical", "Critical", "High", "Critical", "High"],
+            "Mitigation": [
+                "Peer review all IAM policies before deployment",
+                "Enable organization-wide CloudTrail with S3 log validation",
+                "Enforce MFA policy on all privileged and console users",
+                "Automated key rotation policy — 90-day maximum",
+                "Lock root credentials, enable MFA, alert on any usage",
+                "Restrict security groups to known CIDR ranges only"
+            ],
+            "Owner": ["IAM Team", "AWS Admin", "Security", "IAM Team", "Security", "Cloud Team"],
+            "Status": ["Open", "Closed", "Open", "In Progress", "Closed", "In Progress"]
+        }
+
+        df_gov_risk = pd.DataFrame(gov_risk_data)
+
+        def color_gov_status(val):
+            if val == "Open":
+                return "background-color: #fde8e8; color: #a32d2d"
+            elif val == "Closed":
+                return "background-color: #eaf3de; color: #3b6d11"
+            elif val == "In Progress":
+                return "background-color: #faeeda; color: #854f0b"
+            return ""
+
+        def color_gov_sev(val):
+            if val == "Critical":
+                return "background-color: #a32d2d; color: #ffffff"
+            elif val == "High":
+                return "background-color: #fde8e8; color: #a32d2d"
+            elif val == "Medium":
+                return "background-color: #faeeda; color: #854f0b"
+            elif val == "Low":
+                return "background-color: #eaf3de; color: #3b6d11"
+            return ""
+
+        styled_gov_risk = df_gov_risk.style.map(color_gov_status, subset=["Status"]).map(color_gov_sev, subset=["Likelihood", "Impact"])
+        st.dataframe(styled_gov_risk, use_container_width=True, hide_index=True)
+
+        st.markdown("**Risk Summary**")
+        rcol1, rcol2, rcol3 = st.columns(3)
+        rcol1.metric("Open Risks", "2", delta="-1 this week", delta_color="inverse")
+        rcol2.metric("In Progress", "2")
+        rcol3.metric("Closed", "2", delta="+2 this month")
+
+    # ── TAB 4: STAKEHOLDERS ──
+    with tab4:
+        st.subheader("Stakeholder Register")
+
+        stakeholder_data = {
+            "Stakeholder": [
+                "CISO",
+                "IAM Team",
+                "Network Team",
+                "Cloud Team",
+                "Security Operations",
+                "Help Desk",
+                "HR",
+                "Application Owners",
+                "Vendor — IAM Platform"
+            ],
+            "Role": [
+                "Executive Sponsor",
+                "Implementation Lead",
+                "Infrastructure Support",
+                "AWS Environment Owner",
+                "Monitoring & Response",
+                "User Support & Communications",
+                "Identity Data Source",
+                "Access Approvers",
+                "Third-Party Implementation Partner"
+            ],
+            "Communication": [
+                "Weekly steering committee",
+                "Daily standups",
+                "Weekly sync",
+                "Weekly sync",
+                "Bi-weekly review",
+                "Monthly briefing",
+                "As needed — data requests",
+                "Certification cycles",
+                "Weekly vendor coordination"
+            ],
+            "Influence": ["High", "High", "Medium", "High", "Medium", "Low", "Medium", "Medium", "Medium"],
+            "Interest": ["High", "High", "Medium", "High", "High", "Medium", "Low", "High", "High"]
+        }
+
+        df_stake = pd.DataFrame(stakeholder_data)
+
+        def color_level(val):
+            if val == "High":
+                return "background-color: #e6f1fb; color: #185fa5"
+            elif val == "Medium":
+                return "background-color: #faeeda; color: #854f0b"
+            elif val == "Low":
+                return "background-color: #f0f2f6; color: #555555"
+            return ""
+
+        styled_stake = df_stake.style.map(color_level, subset=["Influence", "Interest"])
+        st.dataframe(styled_stake, use_container_width=True, hide_index=True)
+
+    # ── TAB 5: EXECUTIVE STATUS ──
+    with tab5:
+        st.subheader("Executive Status Report")
+        st.markdown("**Reporting Period: Current Week**")
+
+        scol1, scol2, scol3 = st.columns(3)
+        scol1.metric("Overall Status", "🟢 Green")
+        scol2.metric("Schedule", "🟢 On Track")
+        scol3.metric("Budget", "🟢 On Track")
+        scol4, scol5, scol6 = st.columns(3)
+        scol4.metric("Scope", "🟢 Stable")
+        scol5.metric("Risk", "🟡 Monitoring")
+        scol6.metric("Issues", "🔴 1 Critical")
+
+        st.markdown("---")
+        st.markdown("### Executive Summary")
+        st.markdown("""
+        This week the project completed **RBAC implementation** across all in-scope
+        business units, marking a major Phase 2 milestone.
+
+        **Security Hub findings were reduced by 35%** following the remediation
+        sprint targeting IAM misconfigurations and logging gaps.
+
+        **One critical issue remains open** involving CloudTrail configuration in a
+        secondary region — remediation is assigned to the AWS Admin team with a
+        target resolution of end of week.
+
+        MFA rollout for privileged accounts is **in progress at 80% adoption**, with
+        Help Desk supporting the remaining user migrations.
+
+        Overall, the project **remains on schedule and within budget**, with
+        completion tracking at 72% against a Q4 delivery target.
+        """)
+
+        st.markdown("### Decisions Needed From Leadership")
+        st.markdown("""
+        - Approval of extended maintenance window for CloudTrail remediation
+        - Sign-off on Q4 access certification scope — all privileged accounts vs full population
+        """)
 
 # ── MONITORING ──────────────────────────────────────────────
 elif page == "📊 Monitoring & Detection":
