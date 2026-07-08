@@ -5,7 +5,7 @@ import streamlit as st
 import pandas as pd
 
 st.set_page_config(
-    page_title="AWS IAM & Cloud Security Lab",
+    page_title="MiffTech · AWS IAM & Cloud Security Lab",
     page_icon="🛡️",
     layout="wide"
 )
@@ -14,7 +14,7 @@ st.markdown("""
 <style>
     section[data-testid="stSidebar"] {
         background-color: #141C26;
-        border-right: 2px solid #00B4D8;
+        border-right: 3px solid #E8B830;
     }
     section[data-testid="stSidebar"] .stMarkdown, 
     section[data-testid="stSidebar"] label,
@@ -35,9 +35,12 @@ st.markdown("""
 
 
 # Sidebar navigation
+import os as _os
+if _os.path.exists("assets/logo.png"):
+    st.sidebar.image("assets/logo.png", use_container_width=True)
 st.sidebar.title("🛡️ Lab Navigation")
 st.sidebar.markdown("**Tyrell Mifflin**")
-st.sidebar.markdown("IAM/GRC Consultant · CEH · CSM")
+st.sidebar.markdown("MiffTech Risk AI & Consulting · CEH · CSM")
 st.sidebar.markdown("---")
 
 page = st.sidebar.radio("Select a section:", [
@@ -937,3 +940,14 @@ elif page == "🔗 Links & Contact":
         st.markdown("- AI-Powered GRC Tools")
         st.markdown("- Access Certifications & Reviews")
         st.markdown("- Privileged Access Governance")
+
+# ── MIFFTECH FOOTER ──
+st.markdown("""
+<div style="margin-top: 3rem; padding-top: 1rem; border-top: 2px solid #E8B830; color: #666; font-size: 0.85rem; text-align: center;">
+    <strong>MiffTech Risk AI & Consulting</strong> · Tyrell Mifflin, CEH · CSM · CCSP (Expected 2026)<br>
+    IAM Governance · GRC Engineering · AI Risk Advisory · New Castle, DE<br>
+    <a href="https://iam-grc-assistant.streamlit.app">AI GRC Platform</a> ·
+    <a href="https://github.com/tyrellmifflin07-glitch">GitHub</a> ·
+    <a href="https://linkedin.com/in/tyrell-mifflin-ceh-csm-85a27583">LinkedIn</a>
+</div>
+""", unsafe_allow_html=True)
