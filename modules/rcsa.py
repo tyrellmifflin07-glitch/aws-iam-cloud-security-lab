@@ -117,6 +117,30 @@ def show():
 
     st.dataframe(styled_rcsa, use_container_width=True, hide_index=True)
 
+    with st.expander("📐 Risk Scoring Methodology"):
+        st.markdown("""
+        **Residual Risk Calculation Model**
+
+        Residual risk is derived from inherent risk, reduced according to
+        assessed control effectiveness:
+
+        | Control Effectiveness | Residual Reduction |
+        |---|---|
+        | Effective | Inherent reduced by 2 levels |
+        | Partially Effective | Inherent reduced by 1 level |
+        | Needs Improvement | No reduction — residual equals inherent |
+
+        **Rating scale:** Low → Medium → High → Critical
+
+        **Examples from this register:**
+        - RCSA-002: Critical inherent + Effective controls → **Medium** residual
+        - RCSA-004: High inherent + Needs Improvement → **High** residual (no credit for weak controls)
+
+        Methodology aligned to COSO ERM risk assessment principles and
+        NIST 800-53 RA-3. Control effectiveness ratings are validated through
+        first-line self-assessment with second-line challenge.
+        """)
+
     st.markdown("---")
     st.subheader("Executive Risk Narrative")
     st.info("""
