@@ -3,3 +3,6 @@
 *.key
 credentials
 __pycache__/
+*.backup
+apply_branding.py
+add_methodology.py
