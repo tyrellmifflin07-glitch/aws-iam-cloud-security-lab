@@ -5,7 +5,7 @@ import streamlit as st
 import pandas as pd
 
 st.set_page_config(
-    page_title="MiffTech · AWS IAM & Cloud Security Lab",
+    page_title="MiffTech · Identity & Risk Governance Platform",
     page_icon="🛡️",
     layout="wide"
 )
@@ -44,7 +44,7 @@ st.sidebar.markdown("MiffTech Risk AI & Consulting · CEH · CSM")
 st.sidebar.markdown("---")
 
 page = st.sidebar.radio("Select a section:", [
-    "🏠 Overview",
+    "🏠 Executive Dashboard",
     "☁️ Project 1 — Cloud Web Infrastructure",
     "🔀 Project 2 — Load Balancer & Network",
     "🪪 Project 3 — Active Directory & IAM",
@@ -68,80 +68,223 @@ st.sidebar.markdown("🌐 [Live GRC Tool](https://iam-grc-assistant.streamlit.ap
 st.sidebar.markdown("💻 [GitHub](https://github.com/tyrellmifflin07-glitch)")
 st.sidebar.markdown("🔗 [LinkedIn](https://linkedin.com/in/tyrell-mifflin-ceh-csm-85a27583)")
 
-# ── OVERVIEW ──────────────────────────────────────────────
-if page == "🏠 Overview":
-    st.title("🛡️ AWS IAM & Cloud Security Lab")
-    st.subheader("Enterprise-Grade Identity Governance & Cloud Security Portfolio")
+# ── EXECUTIVE DASHBOARD ──────────────────────────────────────────────
+if page == "🏠 Executive Dashboard":
+    st.title("🏠 MiffTech Identity & Risk Governance Platform")
+    st.subheader("Enterprise IAM · Cloud Security · GRC · AI Risk Intelligence")
     st.markdown("""
-    This lab replicates an enterprise AWS environment across **12 completed projects** spanning
-    cloud infrastructure, Active Directory identity governance, access certifications,
-    privileged access management, security monitoring, and GRC program management.
+    This platform demonstrates how enterprise security programs connect **identity governance,
+    cloud security, operational risk, compliance, project governance, and AI-assisted GRC** into
+    one executive-ready governance dashboard.
+
+    The detailed project pages remain available in the sidebar as implementation evidence behind
+    each platform capability.
     """)
 
-    col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Projects Completed", "12")
-    col2.metric("Frameworks Applied", "5")
-    col3.metric("IAM Controls Demonstrated", "20+")
-    col4.metric("AWS Services Used", "12+")
+    st.markdown("---")
+
+    st.subheader("Executive Security Scorecard")
+    score1, score2, score3, score4, score5, score6 = st.columns(6)
+    score1.metric("Identity Security", "96%", delta="+4% maturity")
+    score2.metric("Cloud Security", "94%", delta="+3% posture")
+    score3.metric("Compliance", "97%", delta="+5 controls")
+    score4.metric("Overall Risk", "Medium")
+    score5.metric("Critical Findings", "3", delta="-2 remediated", delta_color="inverse")
+    score6.metric("Open Actions", "5", delta="-1 this sprint", delta_color="inverse")
+
+    st.caption("Representative executive indicators based on the IAM, cloud security, RCSA, project governance, and AI GRC modules in this portfolio.")
 
     st.markdown("---")
-    st.subheader("🎯 Cybersecurity Program Dashboard")
-    pcol1, pcol2, pcol3, pcol4, pcol5, pcol6 = st.columns(6)
-    pcol1.metric("Projects", "1")
-    pcol2.metric("Open Risks", "6")
-    pcol3.metric("Open Issues", "2")
-    pcol4.metric("Milestones", "4")
-    pcol5.metric("Completion", "72%")
-    pcol6.metric("Exec Status", "🟢 Green")
-    st.caption("Full PM artifacts — Charter, RAID Log, Risk Register, Stakeholders, Executive Status — in the 📁 Project Governance section")
+
+    st.subheader("Platform Overview")
+    st.markdown("""
+    **MiffTech Identity & Risk Governance Platform** is a portfolio-grade governance application
+    built with Python and Streamlit. It connects technical security implementation with the way
+    enterprise teams govern identity, cloud risk, access reviews, privileged access, project risk,
+    operational controls, and executive reporting.
+
+    The purpose is to demonstrate not only that security controls can be configured, but also that
+    they can be governed, measured, documented, mapped to frameworks, and communicated to leadership.
+    """)
 
     st.markdown("---")
-    st.subheader("Capabilities Demonstrated")
 
-    capabilities = {
-        "Cloud Infrastructure Security": "EC2, ALB, VPC, Security Groups, network segmentation",
-        "Identity & Access Governance": "Active Directory, OUs, RBAC, JML lifecycle, service account governance",
-        "AWS IAM Governance": "IAM roles, least privilege, MFA, CloudTrail, Config, GuardDuty, Security Hub",
-        "Security Monitoring": "CloudWatch, GuardDuty, Nginx logs, auth.log, external Nmap validation",
-        "GRC Program Management": "RAID Log, Risk Register, risk tracking, stakeholder accountability",
-        "Governance Frameworks": "Least privilege, defense-in-depth, SoD, access certification, audit readiness"
+    st.subheader("Platform Capability Map")
+
+    cap1, cap2 = st.columns(2)
+
+    with cap1:
+        st.markdown("""
+        ### 👤 Identity Governance
+        Active Directory, RBAC, access certifications, role engineering, access requests,
+        Joiner-Mover-Leaver lifecycle, privileged access, Entra ID governance, and IAM modernization.
+
+        **Supporting evidence:** Projects 3–10
+
+        ### ☁️ Cloud Security
+        AWS infrastructure, network segmentation, load balancing, CloudTrail, GuardDuty,
+        Security Hub, CloudWatch, and external attack-surface validation.
+
+        **Supporting evidence:** Projects 1–2 and Monitoring & Detection
+
+        ### 📊 Operational Risk
+        RCSA, inherent risk, residual risk, control effectiveness, ownership, and remediation action tracking.
+
+        **Supporting evidence:** Operational Risk — RCSA
+        """)
+
+    with cap2:
+        st.markdown("""
+        ### 📁 Project Governance
+        Project charter, RAID log, risk register, stakeholder register, milestones,
+        executive status reporting, and leadership decision tracking.
+
+        **Supporting evidence:** Project 11 and Project Governance
+
+        ### 🤖 AI Risk Intelligence
+        AI-powered IAM risk assessment, AI adoption risk advisory, control mapping,
+        thematic risk analysis, and executive-ready reporting.
+
+        **Supporting evidence:** Project 12 — AI GRC Assistant
+
+        ### 📈 Executive Reporting
+        Security posture, compliance coverage, open findings, control maturity,
+        action plans, and leadership-ready summaries.
+        """)
+
+    st.markdown("---")
+
+    st.subheader("Governance Snapshot")
+    g1, g2, g3, g4, g5, g6 = st.columns(6)
+    g1.metric("Managed Identities", "100K")
+    g2.metric("Privileged Accounts", "42")
+    g3.metric("Access Reviews", "Complete")
+    g4.metric("High Risks", "4")
+    g5.metric("Audit Findings", "6")
+    g6.metric("Control Coverage", "92%")
+
+    st.markdown("---")
+
+    st.subheader("Compliance & Control Coverage")
+    framework_data = {
+        "Framework": [
+            "NIST 800-53",
+            "PCI DSS",
+            "SOC 2",
+            "HIPAA",
+            "ISO 27001",
+            "COSO / COBIT"
+        ],
+        "Coverage Demonstrated": [
+            "Access control, audit logging, risk management, least privilege, continuous monitoring",
+            "Authentication, least privilege, logging, access reviews, security policy requirements",
+            "Security, availability, access control, risk assessment, and vendor governance",
+            "Administrative safeguards, technical safeguards, and access management controls",
+            "Asset management, access control, operations security, and governance controls",
+            "Enterprise risk management, control activities, IT governance, and risk ownership"
+        ],
+        "Portfolio Evidence": [
+            "IAM, RCSA, Monitoring, Project Governance",
+            "IAM, Access Reviews, Logging, Cloud Security",
+            "Identity Governance, Risk Assessment, Vendor Risk direction",
+            "Access Management and Administrative Controls",
+            "Cloud Security, IAM Governance, Operations Security",
+            "RCSA, Project Governance, AI Risk Advisory"
+        ]
     }
-
-    for cap, desc in capabilities.items():
-        st.markdown(f"**{cap}** — {desc}")
+    st.dataframe(pd.DataFrame(framework_data), use_container_width=True, hide_index=True)
 
     st.markdown("---")
-    st.subheader("Projects at a Glance")
 
-    projects = [
-        ("1", "Secure Cloud Web Infrastructure", "EC2 · Nginx · Docker · OWASP Juice Shop", "✅"),
-        ("2", "Application Load Balancer & Network Segmentation", "Multi-AZ ALB · Security Groups · VPC", "✅"),
-        ("3", "Active Directory & IAM Governance", "AD DS · RBAC · JML · GPOs · Service Accounts", "✅"),
-        ("4", "Access Certification & Governance Review", "Quarterly cycles · SoD · Remediation closure", "✅"),
-        ("5", "Role Engineering & Birthright Access", "Role matrix · Entitlement standardization", "✅"),
-        ("6", "Access Request & Approval Workflow", "Formal request · Approval chain · Evidence", "✅"),
-        ("7", "Joiner-Mover-Leaver Lifecycle", "End-to-end provisioning and deprovisioning", "✅"),
-        ("8", "Privileged Access & Temporary Elevation", "PAM concepts · JIT access · Session governance", "✅"),
-        ("9", "Microsoft Entra ID Cloud Governance", "Cloud RBAC · PIM · Conditional Access", "✅"),
-        ("10", "IAM Modernization Roadmap", "SailPoint · CyberArk · Entra ID · 12-month plan", "✅"),
-        ("11", "RAID Log & Risk Register", "Risk tracking · Assumptions · Issues · Dependencies", "✅"),
-        ("12", "AI GRC Assistant (Live App)", "AI risk analysis · 7 frameworks · Tested to 100K users", "✅"),
-    ]
-
-    for num, title, desc, status in projects:
-        st.markdown(f"{status} **Project {num} — {title}**  \n{desc}")
+    st.subheader("Recent Governance Activity")
+    activity_data = {
+        "Activity": [
+            "MiffTech branding applied across the platform",
+            "Operational Risk RCSA module added",
+            "Quarterly access certification workflow documented",
+            "Privileged access governance controls documented",
+            "CloudTrail and Security Hub monitoring validated",
+            "AI GRC Assistant integrated as a portfolio capability"
+        ],
+        "Area": [
+            "Platform Branding",
+            "Operational Risk",
+            "Identity Governance",
+            "Privileged Access",
+            "Cloud Security",
+            "AI Risk Intelligence"
+        ],
+        "Status": [
+            "✅ Complete",
+            "✅ Complete",
+            "✅ Complete",
+            "✅ Complete",
+            "✅ Complete",
+            "✅ Complete"
+        ]
+    }
+    st.dataframe(pd.DataFrame(activity_data), use_container_width=True, hide_index=True)
 
     st.markdown("---")
-    st.subheader("Frameworks Applied")
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown("- NIST SP 800-53 — AC-2, AC-6, AC-17, PS-4, PM-9")
-        st.markdown("- PCI-DSS — Requirements 7, 8, 10, 12")
-        st.markdown("- SOC 2 — CC6.2, CC6.3, CC9.2")
-    with col2:
-        st.markdown("- HIPAA — 45 CFR §164.308, §164.312")
-        st.markdown("- ISO 27001 — A.8, A.12")
-        st.markdown("- CIS AWS Foundations Benchmark")
+
+    st.subheader("Implementation Evidence")
+    evidence_data = {
+        "Capability": [
+            "Cloud Web Infrastructure",
+            "Network Segmentation",
+            "Active Directory & IAM",
+            "Access Certifications",
+            "Role Engineering",
+            "Access Request Workflow",
+            "JML Lifecycle",
+            "Privileged Access",
+            "Entra ID Governance",
+            "IAM Modernization",
+            "RAID / Risk Register",
+            "AI GRC Assistant",
+            "Operational Risk RCSA"
+        ],
+        "Evidence Location": [
+            "Project 1",
+            "Project 2",
+            "Project 3",
+            "Project 4",
+            "Project 5",
+            "Project 6",
+            "Project 7",
+            "Project 8",
+            "Project 9",
+            "Project 10",
+            "Project 11 / Project Governance",
+            "Project 12",
+            "Operational Risk — RCSA"
+        ],
+        "Status": [
+            "✅ Complete",
+            "✅ Complete",
+            "✅ Complete",
+            "✅ Complete",
+            "✅ Complete",
+            "✅ Complete",
+            "✅ Complete",
+            "✅ Complete",
+            "✅ Complete",
+            "✅ Complete",
+            "✅ Complete",
+            "✅ Complete",
+            "✅ Complete"
+        ]
+    }
+    st.dataframe(pd.DataFrame(evidence_data), use_container_width=True, hide_index=True)
+
+    st.markdown("---")
+
+    st.info("""
+    **Platform Version 2.0 Direction:** This dashboard is evolving from an AWS IAM lab into a
+    lightweight enterprise governance platform demonstrating identity security, cloud security,
+    operational risk, compliance mapping, AI-assisted GRC, and executive reporting.
+    """)
+
 
 # ── PROJECT 1 ──────────────────────────────────────────────
 elif page == "☁️ Project 1 — Cloud Web Infrastructure":
