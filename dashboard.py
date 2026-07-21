@@ -67,7 +67,6 @@ page = st.sidebar.radio("Select a section:", [
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("🌐 [Live GRC Tool](https://iam-grc-assistant.streamlit.app)")
-st.sidebar.markdown("💻 [GitHub](https://github.com/tyrellmifflin07-glitch)")
 st.sidebar.markdown("🔗 [LinkedIn](https://linkedin.com/in/tyrell-mifflin-ceh-csm-85a27583)")
 
 # ── EXECUTIVE DASHBOARD ──────────────────────────────────────────────
@@ -816,8 +815,6 @@ elif page == "🔗 Links & Contact":
     st.markdown("---")
     st.subheader("Portfolio")
     st.markdown("🌐 **Live AI GRC Tool** — [iam-grc-assistant.streamlit.app](https://iam-grc-assistant.streamlit.app)")
-    st.markdown("💻 **AI GRC Assistant GitHub** — [github.com/tyrellmifflin07-glitch/iam-grc-assistant](https://github.com/tyrellmifflin07-glitch/iam-grc-assistant)")
-    st.markdown("💻 **AWS Lab GitHub** — [github.com/tyrellmifflin07-glitch/aws-iam-cloud-security-lab](https://github.com/tyrellmifflin07-glitch/aws-iam-cloud-security-lab)")
     st.markdown("🔗 **LinkedIn** — [linkedin.com/in/tyrell-mifflin-ceh-csm-85a27583](https://linkedin.com/in/tyrell-mifflin-ceh-csm-85a27583)")
 
     st.markdown("---")
@@ -840,7 +837,6 @@ st.markdown("""
     <strong>MiffTech Risk AI & Consulting</strong> · Tyrell Mifflin, CEH · CSM · CCSP (Expected 2026)<br>
     IAM Governance · GRC Engineering · AI Risk Advisory · New Castle, DE<br>
     <a href="https://iam-grc-assistant.streamlit.app">AI GRC Platform</a> ·
-    <a href="https://github.com/tyrellmifflin07-glitch">GitHub</a> ·
     <a href="https://linkedin.com/in/tyrell-mifflin-ceh-csm-85a27583">LinkedIn</a>
 </div>
 """, unsafe_allow_html=True)
